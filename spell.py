@@ -202,7 +202,6 @@ def init(connection):
 		s_range text NOT NULL CHECK (TRIM (s_range, ' ') != ''),
 		verbal bool NOT NULL,
 		somatic bool NOT NULL,
-		material bool NOT NULL,
 		material_components text,
 		duration text NOT NULL CHECK (TRIM (duration, ' ') != ''),
 		description blob,
