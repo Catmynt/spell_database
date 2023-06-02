@@ -160,12 +160,14 @@ def display(spell_data):
 
 	components = []
 
+	# pdb.set_trace()
+
 	# Components
 	if spell_data['verbal']:
 		components.append('V')
 	if spell_data['somatic']:
 		components.append('S')
-	if spell_data['material']:
+	if spell_data['material_components']:
 		components.extend(['M', f" ({spell_data['material_components']})"])
 
 	print(textwrap.fill(f"\033[1mComponents: {', '.join(components[:-1]) + components[-1]}\033[0m", cols)) # improve later, join doesn't format correctly w variable components
@@ -338,8 +340,8 @@ def extract_and_add(connection, raw_spells):
 			continue
 
 		# Add Spell to Table
-		query = "INSERT INTO spells (name, level, school, source, casting_time, s_range, verbal, somatic, material, material_components, duration, description, tables, spell_lists) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
-		cursor.execute(query, (name, level, school, source, casting_time, s_range, verbal, somatic, material, material_components, duration, json.dumps(description), json.dumps(tables), json.dumps(spell_lists)))
+		query = "INSERT INTO spells (name, level, school, source, casting_time, s_range, verbal, somatic, material_components, duration, description, tables, spell_lists) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)"
+		cursor.execute(query, (name, level, school, source, casting_time, s_range, verbal, somatic, material_components, duration, json.dumps(description), json.dumps(tables), json.dumps(spell_lists)))
 		connection.commit()
 	
 
