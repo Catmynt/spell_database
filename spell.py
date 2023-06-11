@@ -57,7 +57,19 @@ def main(args):
 			print(cursor.fetchall())
 
 	if args.test:
+		cursor.execute("SELECT * FROM spells")
+		boop = cursor.fetchall()
+
+		temp = {}
+
+		for spell in boop:
+			deets = fetch(connection, spell[0])
+			temp[deets['name']] = deets
+
+		pdb.set_trace()
 		return
+
+
 		
 	# Keyword(s) in spell description
 	if args.contains:

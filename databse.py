@@ -1,10 +1,5 @@
 import sqlite3, pdb
 
-
-
-
-
-
 def main():
 	con = sqlite3.connect("spells.db")
 	cursor = con.cursor()
